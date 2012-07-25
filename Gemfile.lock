@@ -73,6 +73,8 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.3)
+    quiet_assets (1.0.1)
+      railties (~> 3.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -131,6 +133,7 @@ DEPENDENCIES
   haml
   jquery-rails
   paperclip
+  quiet_assets
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)
   sorcery

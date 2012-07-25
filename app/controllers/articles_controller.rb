@@ -14,10 +14,25 @@ class ArticlesController < ApplicationController
   end
 
   def create
+
     @article = Article.new(params[:article])
-
+    # @article = Article.new(:title => params[:article][:title], 
+    #                        :body => params[:article][:body],
+    #                        :tag_list => params[:article][:tag_list], 
+    #                        :image => params[:article][:image])
+    puts "*" * 50
+    puts @article
+    warn "Article before save: "
+    warn @article.inspect
     @article.save
-
+    puts "@" * 50
+    puts "params:   " + @article.params.to_s
+    # warn "Article after save: "
+    # warn @article.inspect
+    # raise "Article after save: "
+     # raise @article    #"exception class/object expected" noted on page
+     #compare @article.inspect shows content of article object
+     
     redirect_to article_path(@article)
   end
 
