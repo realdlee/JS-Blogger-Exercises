@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = Article.ordered_by('word_count')
+    #change
     # @articles = Article.all
   end
 

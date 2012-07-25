@@ -1,6 +1,7 @@
 <h1>All Articles</h1>
 
 <ul>
+	Sort by: | Word Count | Title | Published
   <% @articles.each do |article| %>
     <li>
       <%= link_to article.title, article_path(article) %>
