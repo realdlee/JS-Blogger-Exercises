@@ -2,7 +2,9 @@ class ArticlesController < ApplicationController
   before_filter :require_login, :except => [:index, :show]
   
   def index
-    @articles = Article.all
+    @articles = Article.ordered_by('word_count')
+    #change
+    # @articles = Article.all
   end
 
   def show
@@ -25,8 +27,9 @@ class ArticlesController < ApplicationController
     warn "Article before save: "
     warn @article.inspect
     @article.save
+    puts params[:word_count]
     puts "@" * 50
-    puts "params:   " + @article.params.to_s
+    puts "params:   " + params.to_s
     # warn "Article after save: "
     # warn @article.inspect
     # raise "Article after save: "
