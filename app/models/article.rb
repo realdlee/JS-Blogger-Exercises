@@ -5,8 +5,19 @@ class Article < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
 
+  before_save :word_count  #must have this to call function
+  
   has_attached_file :image
 
+  def self.ordered_by(param)
+    case param
+      when 'word_count' then Article.order('word_count')
+      when 'title'      then Article.order('title')
+      when 'published'  then Article.order('created_at DESC')
+      else Article.all
+    end
+  end
+  
   def tag_list
     return self.tags.join(", ")
   end
@@ -22,4 +33,11 @@ class Article < ActiveRecord::Base
       tagging.tag_id = tag.id
     end
   end
+  
+  private 
+  
+  def word_count
+    self.word_count = self.body.split(" ").count
+  end
+  
 end
